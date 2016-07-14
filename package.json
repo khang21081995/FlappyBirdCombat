@@ -1,0 +1,9 @@
+{
+  "name": "FlappyCombat-online",
+  "version": "0.0.1",
+  "description": "Game FlappyCombat Online",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.4.8"
+  }
+}

@@ -15,12 +15,41 @@ class Bird {
     }
 
     update(direction) {
+        var birdLeft, birdRight,velocity;
+
+        if (this.sprite.level == 1) {
+            birdLeft = 'birdLeftlv1';
+            birdRight = 'birdRightlv1';
+            velocity = 250;
+        } else
+        if (this.sprite.level == 2) {
+            birdLeft = 'birdLeftlv2';
+            birdRight = 'birdRightlv2';
+            velocity = 200;
+        } else
+
+        if (this.sprite.level == 3) {
+            birdLeft = 'birdLeftlv3';
+            birdRight = 'birdRightlv3';
+            velocity = 150;
+        } else
+        if (this.sprite.level == 4) {
+            birdLeft = 'birdLeftlv4';
+            birdRight = 'birdRightlv4';
+            velocity = 100;
+        } else
+        {
+            birdLeft = 'birdLeftlv5';
+            birdRight = 'birdRightlv5';
+            velocity = 50;
+        }
+
         if (direction.x < 0) {
-            this.sprite.body.velocity.x = -250;
-            this.sprite.loadTexture('birdLeft') //TODO add left image
+            this.sprite.body.velocity.x = -velocity;
+            this.sprite.loadTexture(birdLeft) //TODO add left image
         } else if (direction.x > 0) {
-            this.sprite.body.velocity.x = 250;
-            this.sprite.loadTexture('birdRight') //TODO add right image
+            this.sprite.body.velocity.x = velocity;
+            this.sprite.loadTexture(birdRight) //TODO add right image
         }
 
         this.sprite.body.velocity.y = direction.y * 200;
