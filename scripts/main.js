@@ -38,10 +38,10 @@ window.onload = function() {
 
 //load resource
 var preload = function() {
-    FlappyCombat.game.load.image('birdLeftlv1', './images/birdleft2.png');
-    FlappyCombat.game.load.image('birdRightlv1', './images/birdright2.png');
-    FlappyCombat.game.load.image('birdLeftlv2', './images/birdleft1.png');
-    FlappyCombat.game.load.image('birdRightlv2', './images/birdright1.png');
+    FlappyCombat.game.load.image('birdLeftlv1', './images/birdleft1.png');
+    FlappyCombat.game.load.image('birdRightlv1', './images/birdright1.png');
+    FlappyCombat.game.load.image('birdLeftlv2', './images/birdleft2.png');
+    FlappyCombat.game.load.image('birdRightlv2', './images/birdright2.png');
     FlappyCombat.game.load.image('birdLeftlv3', './images/birdleft3.png');
     FlappyCombat.game.load.image('birdRightlv3', './images/birdright3.png');
     FlappyCombat.game.load.image('birdLeftlv4', './images/birdleft4.png');

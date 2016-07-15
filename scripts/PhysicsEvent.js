@@ -19,7 +19,7 @@ var onBirdMeetBird = function(birdSprite1, birdSprite2) {
     } else if (birdSprite2.level < birdSprite1.level) {
         birdSprite2.kill();
         birdSprite1.score += birdSprite2.score / 2;
-      
+
     } else if (birdSprite2.level == birdSprite1.level && birdSprite1.level == 3) {
         if (birdSprite2.score > birdSprite1.score) {
             birdSprite1.kill();
@@ -39,7 +39,6 @@ var onBirdMeetBird = function(birdSprite1, birdSprite2) {
 
 var onBarieMeetBird = function(birdSprite, barrieSprite) {
     birdSprite.kill();
-    FlappyCombat.client.reportDied(birdSprite.id);
 }
 
 var onBarieMeetFood = function(foodSprite, barrieSprite) {

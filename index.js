@@ -23,8 +23,6 @@ io.on('connection', function(socket) {
     console.log('New User Connected');
 
     socket.on('login', function(msg) {
-
-
         var newPlayerInfo = {
             id: socket.id,
             username: msg,
