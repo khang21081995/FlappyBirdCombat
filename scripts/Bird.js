@@ -3,8 +3,8 @@ class Bird {
         this.sprite = group.create(x, y, 'birdRightlv1');
         FlappyCombat.game.physics.arcade.enable(this.sprite);
         this.sprite.anchor.set(0.5, 0.5);
-        this.direction = new Phaser.Point(0, 0);
-        this.sprite.body.gravity.y = 0;
+        this.direction = new Phaser.Point(1, 1);
+        this.sprite.body.gravity.y = 100;
         //this.lastShotTime = FlappyCombat.game.time.now;
         this.sprite.body.collideWorldBounds = true;
         this.sprite.health = 1;
@@ -12,13 +12,13 @@ class Bird {
         this.sprite.level = 1;
         this.sprite.body.velocity.x = 0;
         this.sprite.id = id;
-        
+
     }
 
     update(direction) {
         var birdLeft, birdRight, velocity;
-        if(this.sprite.body.gravity.y != 100)
-        this.sprite.body.gravity.y = 100;
+        // if(this.sprite.body.gravity.y != 100)
+        // this.sprite.body.gravity.y = 100;
         if (this.sprite.level == 1) {
             birdLeft = 'birdLeftlv1';
             birdRight = 'birdRightlv1';
@@ -31,7 +31,7 @@ class Bird {
         } else{
             birdLeft = 'birdLeftlv3';
             birdRight = 'birdRightlv3';
-            velocity = 50;
+            velocity = 100;
          }
         // else
         // if (this.sprite.level == 4) {
