@@ -14,7 +14,6 @@ var onBirdMeetBird = function(birdSprite1, birdSprite2) {
     if (birdSprite1.level < birdSprite2.level) {
         birdSprite1.kill();
         birdSprite2.score += birdSprite1.score / 2;
-        FlappyCombat.client.reportDied(birdSprite1.id);
 
     } else if (birdSprite2.level < birdSprite1.level) {
         birdSprite2.kill();

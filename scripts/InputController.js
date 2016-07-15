@@ -29,7 +29,7 @@ class InputController {
             FlappyCombat.client.reportScoreUp(this.bird.sprite.id, this.bird.sprite.score);
             this.lastscore = this.bird.sprite.score;
         }
-        if (!this.bird.sprite.alive) {
+        if (!this.bird.sprite.alive && FlappyCombat.getPlayerById(this.bird.sprite.id, false)) {
            {
                 FlappyCombat.client.reportDied(this.bird.sprite.id);
             }
