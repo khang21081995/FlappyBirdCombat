@@ -51,7 +51,7 @@ io.on('connection', function(socket) {
         //console.log('x= '+data.position.x+' : y= '+data.position.y);
         console.log('data direction: ' + playerInfo.directionX +' : '+playerInfo.directionY);
 //        console.log('playerInfo.direction: '+playerInfo.direction);
-        socket.broadcast.emit('player_moved', playerInfo);
+        socket.broadcast.emit('player_moved', data);
     });
 
 
