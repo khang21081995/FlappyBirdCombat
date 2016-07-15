@@ -3,7 +3,7 @@ class Bird {
         this.sprite = group.create(x, y, 'birdRightlv1');
         FlappyCombat.game.physics.arcade.enable(this.sprite);
         this.sprite.anchor.set(0.5, 0.5);
-        this.direction = new Phaser.Point(1, 0);
+        this.direction = new Phaser.Point(1, 1);
         this.sprite.body.gravity.y = 100;
         //this.lastShotTime = FlappyCombat.game.time.now;
         this.sprite.body.collideWorldBounds = true;
@@ -12,7 +12,7 @@ class Bird {
         this.sprite.level = 1;
         this.sprite.body.velocity.x = 250;
         this.sprite.id = id;
-        console.log('position= '+this.sprite.position.x);
+        //console.log('position= '+this.sprite.position.x);
     }
 
     update(direction) {
