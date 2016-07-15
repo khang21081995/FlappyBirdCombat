@@ -24,7 +24,7 @@ FlappyCombat.onReceivedNewPlayerData = function(data) {
 
 FlappyCombat.onPlayerMoved = function(data) {
     var enemy = FlappyCombat.getPlayerById(data.id, false);
-    enemy.sprite.position = data.position;
+    enemy.position = data.position;
     enemy.update(data.direction);
 }
 
