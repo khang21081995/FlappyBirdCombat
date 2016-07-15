@@ -43,7 +43,7 @@ io.on('connection', function(socket) {
           playerInfo.x = data.position.x;
           playerInfo.y = data.position.y;
           socket.broadcast.emit('player_moved', data);
-          console.log('bird_moved'+data.id+' : '+data.position);
+        //  console.log('bird_moved'+data.id+' : '+data.position);
         });
 
     socket.on('bird_level_up', function(data) {
@@ -59,7 +59,6 @@ io.on('connection', function(socket) {
         //console.log('Server score = ' + data.score);
         socket.broadcast.emit('player_score_up', playerInfo);
     });
-
 
 
     socket.on('bird_died', function(data) {
