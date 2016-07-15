@@ -10,13 +10,14 @@ class Bird {
         this.sprite.health = 1;
         this.sprite.score = 0;
         this.sprite.level = 1;
-        this.sprite.body.velocity.x = 250;
+        this.sprite.body.velocity.x = 0;
         this.sprite.id = id;
         //console.log('position= '+this.sprite.position.x);
     }
 
     update(direction) {
         var birdLeft, birdRight, velocity;
+        if(this.sprite.body.gravity.y != 100)
         this.sprite.body.gravity.y = 100;
         if (this.sprite.level == 1) {
             birdLeft = 'birdLeftlv1';
