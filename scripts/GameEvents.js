@@ -3,7 +3,7 @@
  */
 
 FlappyCombat.onConnected = function(data) {
-    var bird = new Bird(data.x, data.y, FlappyCombat.birdGroup, data.id);
+    var bird = new Bird(data.x, data.y, FlappyCombat.birdGroup, data.id,data.username);
     FlappyCombat.inputController = new InputController(FlappyCombat.keyboard, bird);
     FlappyCombat.game.camera.follow(bird.sprite);
 
@@ -12,13 +12,13 @@ FlappyCombat.onConnected = function(data) {
 FlappyCombat.onReceivedOtherPlayersData = function(datas) {
     for (var i = 0; i < datas.length; i++) {
         FlappyCombat.enemies.push(
-            new Bird(datas[i].x, datas[i].y, FlappyCombat.birdGroup, datas[i].id)
+            new Bird(datas[i].x, datas[i].y, FlappyCombat.birdGroup, datas[i].id,datas[i].username)
         );
     }
 }
 FlappyCombat.onReceivedNewPlayerData = function(data) {
     FlappyCombat.enemies.push(
-        new Bird(data.x, data.y, FlappyCombat.birdGroup, data.id)
+        new Bird(data.x, data.y, FlappyCombat.birdGroup, data.id,data.username)
     );
 }
 

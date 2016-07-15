@@ -1,7 +1,8 @@
 class Client {
-    constructor() {
+    constructor(username) {
+        var that = this;
         this.socket = io();
-
+        that.socket.emit('login', username);
 
         this.socket.on('connected', function(msg) {
             FlappyCombat.onConnected(msg);

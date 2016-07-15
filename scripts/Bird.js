@@ -1,10 +1,13 @@
 class Bird {
-    constructor(x, y, group, id) {
+    constructor(x, y, group, id, username) {
         this.sprite = group.create(x, y, 'birdRightlv1');
         FlappyCombat.game.physics.arcade.enable(this.sprite);
         this.sprite.anchor.set(0.5, 0.5);
         this.direction = new Phaser.Point(1, 1);
         this.sprite.body.gravity.y = 100;
+        this.username = username;
+        console.log('username: '+username);
+
         //this.lastShotTime = FlappyCombat.game.time.now;
         this.sprite.body.collideWorldBounds = true;
         this.sprite.health = 1;
@@ -12,13 +15,20 @@ class Bird {
         this.sprite.level = 1;
         this.sprite.body.velocity.x = 0;
         this.sprite.id = id;
-        console.log('constructor: ' + id + ' : ' + this.sprite.position);
+        //console.log('constructor: ' + id + ' : ' + this.sprite.position);
+        var text = new Phaser.Text(this.sprite.game, 0, -25, username, {
+            font: 'bold 11pt Arial',
+            fill: 'black'
+        });
+        text.anchor.set(0.5, 0.5);
+        this.sprite.addChild(text);
     }
 
     update(direction) {
+
         if (this.sprite.score >= 50 && this.sprite.score < 100 && this.sprite.level != 2) {
             this.sprite.level = 2;
-            
+
         } else if (this.sprite.score >= 100 && this.sprite.score < 300 && this.sprite.level != 3) {
             this.sprite.level = 3;
 

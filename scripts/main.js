@@ -30,7 +30,7 @@ var preload = function() {
 
 var numberOfFood = 0;
 var create = function() {
-    FlappyCombat.client = new Client();
+
     FlappyCombat.game.add.tileSprite(0, 0, 6016, 1024, "background");
     FlappyCombat.game.physics.startSystem(Phaser.Physics.ARCADE);
     FlappyCombat.keyboard = FlappyCombat.game.input.keyboard;
@@ -42,6 +42,11 @@ var create = function() {
     FlappyCombat.inputController;
     FlappyCombat.game.world.setBounds(0, 0, 6016, 1024);
 
+    var username = prompt("Please enter your name", localStorage.getItem('username') || 'Flappy Combat');
+    username = username || 'Flappy Combat';
+
+    localStorage.setItem('username', username);
+    FlappyCombat.client = new Client(username);
     // for (var i = 0; i < 20; i++) {
     //     new Barrie(FlappyCombat.game.world.randomX, FlappyCombat.game.world.randomY, FlappyCombat.barieGroup);
     // }
