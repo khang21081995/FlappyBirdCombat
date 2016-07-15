@@ -2,6 +2,7 @@ class Client {
     constructor() {
         this.socket = io();
 
+
         this.socket.on('connected', function(msg) {
             FlappyCombat.onConnected(msg);
         });
@@ -25,9 +26,6 @@ class Client {
         this.socket.on('player_died', function(msg) {
             FlappyCombat.onPlayerDied(msg);
         });
-
-
-
     }
 
     reportMove(id, direction, position) {
@@ -36,7 +34,7 @@ class Client {
             direction: direction,
             position: position
         });
-         console.log('position: '+position);
+        console.log('position: ' + position);
         // console.log('direction: '+direction);
     }
 
@@ -45,7 +43,7 @@ class Client {
             id: id,
             level: level
         });
-        console.log('level= '+level);
+        console.log('level= ' + level);
     }
     reportScoreUp(id, score) {
         this.socket.emit('bird_score_up', {

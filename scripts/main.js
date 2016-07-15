@@ -21,10 +21,6 @@ var preload = function() {
     FlappyCombat.game.load.image('birdRightlv2', './images/birdright2.png');
     FlappyCombat.game.load.image('birdLeftlv3', './images/birdleft3.png');
     FlappyCombat.game.load.image('birdRightlv3', './images/birdright3.png');
-    FlappyCombat.game.load.image('birdLeftlv4', './images/lv4_left.png');
-    FlappyCombat.game.load.image('birdRightlv4', './images/lv4_right.png');
-    FlappyCombat.game.load.image('birdLeftlv4', './images/lv5_left.png'); //TODO lam cai anh con chim ben trai xem nao
-    FlappyCombat.game.load.image('birdRightlv4', './images/lv5_right.png');
 
     FlappyCombat.game.load.image('food', './images/Nintendo-Button-A1_copy.png');
     FlappyCombat.game.load.image('food2', './images/Nintendo-Button-B.png');

@@ -28,32 +28,22 @@ io.on('connection', function(socket) {
             id: socket.id,
             x: Math.random() * 6016,
             y: Math.random() * 1024,
-            directionX: 1,
-            directionY: 1,
             level: 1,
             score: 0
         }
         // Tell the new player where to initiate his bird
-    socket.emit('connected', newPlayerInfo);
-    // Tell all other players where to initiate new player's bird
-    socket.broadcast.emit('new_player_connected', newPlayerInfo);
-    // Add new player's info to the array of all players
-    players.push(newPlayerInfo);
+        socket.emit('connected', newPlayerInfo);
+        // Tell all other players where to initiate new player's bird
+        socket.broadcast.emit('new_player_connected', newPlayerInfo);
+        // Add new player's info to the array of all players
+        players.push(newPlayerInfo);
 
-    socket.on('bird_moved', function(data) {
-        var playerInfo = getPlayerById(data.id, false);
-
-        playerInfo.x = data.position.x;
-        playerInfo.y = data.position.y;
-        playerInfo.directionX = data.direction.x;
-        playerInfo.directionY = data.direction.y;
-        console.log('data position: ' + data.position.x + ' : ' + playerInfo.y);
-        //console.log('x= '+data.position.x+' : y= '+data.position.y);
-        console.log('data direction: ' + playerInfo.directionX +' : '+playerInfo.directionY);
-//        console.log('playerInfo.direction: '+playerInfo.direction);
-        socket.broadcast.emit('player_moved', data);
-    });
-
+        socket.on('bird_moved', function(data){
+          var playerInfo = getPlayerById(data.id,false);
+          playerInfo.x = data.position.x;
+          playerInfo.y = data.position.y;
+          socket.broadcast.emit('player_moved', data);
+        });
 
     socket.on('bird_level_up', function(data) {
         var playerInfo = getPlayerById(data.id, false);
