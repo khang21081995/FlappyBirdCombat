@@ -26,8 +26,8 @@ FlappyCombat.onPlayerMoved = function(data) {
     var enemy = FlappyCombat.getPlayerById(data.id, false);
     enemy.sprite.position.x = data.position.x;
     enemy.sprite.position.y = data.position.y;
-
-    enemy.update(data.direction);
+    enemy.update(new Phaser.Point(data.directionX,data.directionY));
+    
 }
 
 FlappyCombat.onPlayerFired = function(data) {

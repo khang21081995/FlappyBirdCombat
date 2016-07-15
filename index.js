@@ -28,7 +28,8 @@ io.on('connection', function(socket) {
             id: socket.id,
             x: Math.random() * 6016,
             y: Math.random() * 1024,
-            direction: new Point(1, 1),
+            directionX: 1,
+            directionY: 1,
             level: 1,
             score: 0
         }
@@ -41,12 +42,15 @@ io.on('connection', function(socket) {
 
     socket.on('bird_moved', function(data) {
         var playerInfo = getPlayerById(data.id, false);
+
         playerInfo.x = data.position.x;
         playerInfo.y = data.position.y;
-        playerInfo.direction = data.direction;
-        //playerInfo.direction.y = data.direction.y;
-
-        //  console.log('x= '+data.position.x+' : y= '+data.position.y);
+        playerInfo.directionX = data.direction.x;
+        playerInfo.directionY = data.direction.y;
+        console.log('data position: ' + data.position.x + ' : ' + playerInfo.y);
+        //console.log('x= '+data.position.x+' : y= '+data.position.y);
+        console.log('data direction: ' + playerInfo.directionX +' : '+playerInfo.directionY);
+//        console.log('playerInfo.direction: '+playerInfo.direction);
         socket.broadcast.emit('player_moved', playerInfo);
     });
 

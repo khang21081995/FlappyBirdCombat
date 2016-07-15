@@ -23,6 +23,7 @@ class InputController {
         }
         this.bird.update(this.lastdirection);
         FlappyCombat.client.reportMove(this.bird.sprite.id, this.lastdirection, this.bird.sprite.position);
+        console.log('this.lastdirection: '+this.lastdirection);
         if (this.bird.sprite.score - this.lastscore > 0) {
             FlappyCombat.client.reportScoreUp(this.bird.sprite.id, this.bird.sprite.score);
             this.lastscore = this.bird.sprite.score;

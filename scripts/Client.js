@@ -36,6 +36,8 @@ class Client {
             direction: direction,
             position: position
         });
+         console.log('position: '+position);
+        // console.log('direction: '+direction);
     }
 
     reportLevelUp(id, level) {

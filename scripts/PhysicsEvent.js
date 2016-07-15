@@ -6,7 +6,7 @@ var onFoodMeetBird = function(birdSprite, foodSprite) {
 
     birdSprite.score += foodSprite.score;
 
-    console.log(birdSprite.score);
+  //  console.log(birdSprite.score);
 
     if (birdSprite.score >= 50 && birdSprite.score < 100 && birdSprite.level != 2) {
         birdSprite.level = 2;
@@ -29,7 +29,7 @@ var onBirdMeetBird = function(birdSprite1, birdSprite2) {
       FlappyCombat.client.reportDied(birdSprite1.id);
       birdSprite2.score+=birdSprite1.score/2;
       FlappyCombat.client.reportScoreUp(birdSprite2.id,birdSprite2.score);
-      console.log(birdSprite2.score);
+      //console.log(birdSprite2.score);
     }
 
     birdSprite1.score += foodSprite.score;
