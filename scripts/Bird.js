@@ -53,5 +53,7 @@ class Bird {
         }
 
         this.sprite.body.velocity.y = direction.y * 150;
+          FlappyCombat.client.reportMove(this.sprite.id, direction, this.sprite.position);
+          console.log('reportMove: '+this.sprite.id+' : '+ direction+' : '+this.sprite.position);
     }
 }

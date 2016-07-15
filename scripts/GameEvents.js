@@ -29,12 +29,6 @@ FlappyCombat.onPlayerMoved = function(data) {
 
 }
 
-FlappyCombat.onPlayerFired = function(data) {
-    var enemy = FlappyCombat.getPlayerById(data.id, false);
-    enemy.sprite.position = data.position;
-    new Bullet(enemy);
-}
-
 FlappyCombat.onPlayerDied = function(data) {
     var enemy = FlappyCombat.getPlayerById(data.id, true);
     enemy.sprite.destroy();

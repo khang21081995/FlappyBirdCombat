@@ -11,7 +11,7 @@ class InputController {
 
     update() {
         // var direction = this.lastdirection;
-        FlappyCombat.client.reportMove(this.bird.sprite.id, this.lastdirection, this.bird.sprite.position);
+
         this.lastdirection.y = 1;
         if (this.keyboard.isDown(Phaser.KeyCode.LEFT)) this.lastdirection.x = -1;
         else if (this.keyboard.isDown(Phaser.KeyCode.RIGHT)) this.lastdirection.x = 1;
@@ -21,7 +21,7 @@ class InputController {
         }
 
         this.bird.update(this.lastdirection);
-
+          //FlappyCombat.client.reportMove(this.bird.sprite.id, this.lastdirection, this.bird.sprite.position);
 
         if (this.bird.sprite.score - this.lastscore > 0) {
             FlappyCombat.client.reportScoreUp(this.bird.sprite.id, this.bird.sprite.score);
