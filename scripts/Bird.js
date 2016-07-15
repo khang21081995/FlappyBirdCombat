@@ -1,6 +1,6 @@
 class Bird {
     constructor(x, y, group, id) {
-        this.sprite = group.create(x, y, 'birdRight');
+        this.sprite = group.create(x, y, 'birdRightlv1');
         FlappyCombat.game.physics.arcade.enable(this.sprite);
         this.sprite.anchor.set(0.5, 0.5);
         this.direction = new Phaser.Point(1, 0);
@@ -12,10 +12,11 @@ class Bird {
         this.sprite.level = 1;
         this.sprite.body.velocity.x = 250;
         this.sprite.id = id;
+        console.log('position= '+this.sprite.position.x);
     }
 
     update(direction) {
-        var birdLeft, birdRight,velocity;
+        var birdLeft, birdRight, velocity;
 
         if (this.sprite.level == 1) {
             birdLeft = 'birdLeftlv1';
@@ -37,8 +38,7 @@ class Bird {
             birdLeft = 'birdLeftlv4';
             birdRight = 'birdRightlv4';
             velocity = 100;
-        } else
-        {
+        } else {
             birdLeft = 'birdLeftlv5';
             birdRight = 'birdRightlv5';
             velocity = 50;
@@ -46,12 +46,12 @@ class Bird {
 
         if (direction.x < 0) {
             this.sprite.body.velocity.x = -velocity;
-            this.sprite.loadTexture(birdLeft) //TODO add left image
+            this.sprite.loadTexture(birdLeft);
         } else if (direction.x > 0) {
             this.sprite.body.velocity.x = velocity;
-            this.sprite.loadTexture(birdRight) //TODO add right image
+            this.sprite.loadTexture(birdRight);
         }
 
-        this.sprite.body.velocity.y = direction.y * 200;
+        this.sprite.body.velocity.y = direction.y * 150;
     }
 }

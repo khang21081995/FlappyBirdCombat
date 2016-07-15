@@ -15,27 +15,27 @@ window.onload = function() {
 
 //load resource
 var preload = function() {
-    FlappyCombat.game.load.image('birdLeftlv1', './images/lv1_left.png');
-    FlappyCombat.game.load.image('birdRightlv1', './images/lv1_right.png');
-    FlappyCombat.game.load.image('birdLeftlv2', './images/lv2_left.png');
-    FlappyCombat.game.load.image('birdRightlv2', './images/lv2_right.png');
-    FlappyCombat.game.load.image('birdLeftlv3', './images/lv3_left.png');
-    FlappyCombat.game.load.image('birdRightlv3', './images/lv3_right.png');
+    FlappyCombat.game.load.image('birdLeftlv1', './images/birdleft1.png');
+    FlappyCombat.game.load.image('birdRightlv1', './images/birdright1.png');
+    FlappyCombat.game.load.image('birdLeftlv2', './images/birdleft2.png');
+    FlappyCombat.game.load.image('birdRightlv2', './images/birdright2.png');
+    FlappyCombat.game.load.image('birdLeftlv3', './images/birdleft3.png');
+    FlappyCombat.game.load.image('birdRightlv3', './images/birdright3.png');
     FlappyCombat.game.load.image('birdLeftlv4', './images/lv4_left.png');
     FlappyCombat.game.load.image('birdRightlv4', './images/lv4_right.png');
     FlappyCombat.game.load.image('birdLeftlv4', './images/lv5_left.png'); //TODO lam cai anh con chim ben trai xem nao
     FlappyCombat.game.load.image('birdRightlv4', './images/lv5_right.png');
 
-    FlappyCombat.game.load.image('food', './images/trees.png');
+    FlappyCombat.game.load.image('food', './images/Nintendo-Button-A1_copy.png');
     FlappyCombat.game.load.image('food2', './images/Nintendo-Button-B.png');
-    FlappyCombat.game.load.image('barrie', './images/big_explosion_5.png');
+    FlappyCombat.game.load.image('barrie', './images/barrie1.png');
     FlappyCombat.game.load.image('background', './images/map.png');
 }
 
 var numberOfFood = 0;
 var create = function() {
     FlappyCombat.client = new Client();
-    FlappyCombat.game.add.tileSprite(0, 0, 6000, 1000, "background");
+    FlappyCombat.game.add.tileSprite(0, 0, 6016, 1024, "background");
     FlappyCombat.game.physics.startSystem(Phaser.Physics.ARCADE);
     FlappyCombat.keyboard = FlappyCombat.game.input.keyboard;
     //FlappyCombat.game.physics.arcade.gravity.y = 10;
@@ -43,8 +43,8 @@ var create = function() {
     FlappyCombat.foodGroup = FlappyCombat.game.add.physicsGroup();
     FlappyCombat.barieGroup = FlappyCombat.game.add.physicsGroup();
     FlappyCombat.enemies = [];
-
-    FlappyCombat.game.world.setBounds(0, 0, 6000, 1000);
+    FlappyCombat.inputController;
+    FlappyCombat.game.world.setBounds(0, 0, 6016, 1024);
 
     // for (var i = 0; i < 20; i++) {
     //     new Barrie(FlappyCombat.game.world.randomX, FlappyCombat.game.world.randomY, FlappyCombat.barieGroup);
@@ -90,77 +90,10 @@ var update = function() {
 /*
  *  HELPER FUNCTIONS
  */
-
-
-/*
- * PHYSICS EVENTS
- */
-
-var onFoodMeetBird = function(birdSprite, foodSprite) {
-
-    birdSprite.score += foodSprite.score;
-    if (birdSprite.score >= 50 && birdSprite.score < 100) {
-        birdSprite.level = 2;
-    } else if (birdSprite.score >= 100 && birdSprite.score < 300) {
-        birdSprite.level = 3;
-    } else if (birdSprite.score >= 300 && birdSprite.score < 550) {
-        birdSprite.level = 4;
-    } else if (birdSprite.score >= 550) {
-        birdSprite.level = 5;
+var getPlayerById = function(id, killKo) {
+    for (var i = 0; i < FlappyCombat.enemies.length; i++) {
+        if (FlappyCombat.enemies[i].id == id) {
+            return killKo ? FlappyCombat.enemies.splice(i, 1)[0] : players[i]; // splicce dung de xoa phan tu thu i trong mang
+        }
     }
-
-    foodSprite.kill();
-    numberOfFood--;
-    //foodSprite.destroy();
-}
-
-var onBarieMeetBird = function(birdSprite, barrieSprite) {
-    birdSprite.kill();
-    birdSprite.destroy();
-}
-
-var onBarieMeetFood = function(foodSprite, barrieSprite) {
-    foodSprite.kill();
-    numberOfFood--;
-}
-
-/*
- * GAME EVENTS
- */
-
-FlappyCombat.onConnected = function(data) {
-    var bird = new Bird(data.x, data.y, FlappyCombat.birdGroup, data.id);
-    FlappyCombat.inputController = new InputController(FlappyCombat.keyboard, bird);
-    FlappyCombat.game.camera.follow(bird.sprite);
-
-}
-
-FlappyCombat.onReceivedOtherPlayersData = function(datas) {
-    for (var i = 0; i < datas.length; i++) {
-        FlappyCombat.enemies.push(
-            new Bird(datas[i].x, datas[i].y, FlappyCombat.birdGroup, datas[i].id)
-        );
-    }
-}
-FlappyCombat.onReceivedNewPlayerData = function(data) {
-    FlappyCombat.enemies.push(
-        new Bird(data.x, data.y, FlappyCombat.birdGroup, data.id)
-    );
-}
-
-FlappyCombat.onPlayerMoved = function(data) {
-    var enemy = FlappyCombat.getPlayerById(data.id, false);
-    enemy.sprite.position = data.position;
-    enemy.update(data.direction);
-}
-
-FlappyCombat.onPlayerFired = function(data) {
-    var enemy = FlappyCombat.getPlayerById(data.id, false);
-    enemy.sprite.position = data.position;
-    new Bullet(enemy);
-}
-
-FlappyCombat.onPlayerDied = function(data) {
-    var enemy = FlappyCombat.getPlayerById(data.id, true);
-    enemy.sprite.destroy();
 }
