@@ -34,7 +34,7 @@ class Client {
             direction: direction,
             position: position
         });
-        console.log('position: ' + position);
+      //  console.log('position: ' + position);
         // console.log('direction: '+direction);
     }
 
@@ -43,7 +43,7 @@ class Client {
             id: id,
             level: level
         });
-        console.log('level= ' + level);
+        //console.log('level= ' + level);
     }
     reportScoreUp(id, score) {
         this.socket.emit('bird_score_up', {

@@ -12,7 +12,7 @@ class Bird {
         this.sprite.level = 1;
         this.sprite.body.velocity.x = 0;
         this.sprite.id = id;
-        //console.log('position= '+this.sprite.position.x);
+        
     }
 
     update(direction) {

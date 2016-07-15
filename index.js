@@ -48,14 +48,14 @@ io.on('connection', function(socket) {
     socket.on('bird_level_up', function(data) {
         var playerInfo = getPlayerById(data.id, false);
         playerInfo.level = data.level;
-        console.log('level sever= ' + data.level);
+      //  console.log('level sever= ' + data.level);
         socket.broadcast.emit('player_level_up', playerInfo);
     });
 
     socket.on('bird_score_up', function(data) {
         var playerInfo = getPlayerById(data.id, false);
         playerInfo.score = data.score;
-        console.log('Server score = ' + data.score);
+        //console.log('Server score = ' + data.score);
         socket.broadcast.emit('player_score_up', playerInfo);
     });
 
