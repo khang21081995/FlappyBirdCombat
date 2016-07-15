@@ -24,18 +24,19 @@ class Bird {
         });
         text.anchor.set(0.5, 0.5);
         this.sprite.addChild(text);
-        var text1 = new Phaser.Text(this.sprite.game, 0, 50, '0', {
+        FlappyCombat.expText = new Phaser.Text(this.sprite.game, 0, 50, '0', {
             font: 'bold 11pt Arial',
             fill: 'while'
         });
 
-        text1.anchor.set(0.5, 0.5);
-        this.sprite.addChild(text1);
+        FlappyCombat.expText.anchor.set(0.5, 0.5);
+        this.sprite.addChild(FlappyCombat.expText);
     }
 
     update(direction) {
       //  text1.setText(this.sprite.score);
         //console.log(this.sprite.score);
+        FlappyCombat.expText.setText(this.sprite.score);
         if (this.sprite.score >= 50 && this.sprite.score < 100 && this.sprite.level != 2) {
             this.sprite.level = 2;
 
