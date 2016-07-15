@@ -11,7 +11,7 @@ class Bird {
         this.sprite.score = 0;
         this.sprite.level = 1;
         this.sprite.body.velocity.x = 0;
-        this.id = id;
+        this.sprite.id = id;
         console.log('constructor: '+id+' : '+this.sprite.position);
     }
 
