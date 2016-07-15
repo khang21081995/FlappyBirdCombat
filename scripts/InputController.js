@@ -7,6 +7,7 @@ class InputController {
         this.lastlevel = bird.sprite.level;
         this.lastscore = bird.sprite.score;
         this.lastdirection = new Phaser.Point(0, 0);
+
     }
 
     update() {
@@ -21,14 +22,13 @@ class InputController {
         }
 
         this.bird.update(this.lastdirection);
-          //FlappyCombat.client.reportMove(this.bird.sprite.id, this.lastdirection, this.bird.sprite.position);
+        //FlappyCombat.client.reportMove(this.bird.sprite.id, this.lastdirection, this.bird.sprite.position);
 
         if (this.bird.sprite.score - this.lastscore > 0) {
             FlappyCombat.client.reportScoreUp(this.bird.sprite.id, this.bird.sprite.score);
             this.lastscore = this.bird.sprite.score;
         }
-
-
+        if (!this.bird.sprite.alive) FlappyCombat.client.reportDied(this.bird.sprite.id);
         if (this.bird.sprite.level - this.lastlevel > 0) {
             this.lastlevel = this.bird.sprite.level;
             FlappyCombat.client.reportLevelUp(this.bird.sprite.id, this.bird.sprite.level);
