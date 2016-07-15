@@ -12,10 +12,19 @@ class Bird {
         this.sprite.level = 1;
         this.sprite.body.velocity.x = 0;
         this.sprite.id = id;
-        console.log('constructor: '+id+' : '+this.sprite.position);
+        console.log('constructor: ' + id + ' : ' + this.sprite.position);
     }
 
     update(direction) {
+        if (this.sprite.score >= 50 && this.sprite.score < 100 && this.sprite.level != 2) {
+            this.sprite.level = 2;
+            
+        } else if (this.sprite.score >= 100 && this.sprite.score < 300 && this.sprite.level != 3) {
+            this.sprite.level = 3;
+
+        }
+
+
         var birdLeft, birdRight, velocity;
         // if(this.sprite.body.gravity.y != 100)
         // this.sprite.body.gravity.y = 100;
@@ -28,11 +37,11 @@ class Bird {
             birdLeft = 'birdLeftlv2';
             birdRight = 'birdRightlv2';
             velocity = 150;
-        } else{
+        } else {
             birdLeft = 'birdLeftlv3';
             birdRight = 'birdRightlv3';
             velocity = 100;
-         }
+        }
         // else
         // if (this.sprite.level == 4) {
         //     birdLeft = 'birdLeftlv4';
@@ -53,7 +62,7 @@ class Bird {
         }
 
         this.sprite.body.velocity.y = direction.y * 150;
-          FlappyCombat.client.reportMove(this.sprite.id, direction, this.sprite.position);
-          ///console.log('reportMove: '+this.sprite.id+' : '+ direction+' : '+this.sprite.position);
+        FlappyCombat.client.reportMove(this.sprite.id, direction, this.sprite.position);
+        ///console.log('reportMove: '+this.sprite.id+' : '+ direction+' : '+this.sprite.position);
     }
 }

@@ -32,6 +32,7 @@ FlappyCombat.onPlayerMoved = function(data) {
 
 FlappyCombat.onPlayerDied = function(data) {
     var enemy = FlappyCombat.getPlayerById(data.id, true);
+    if(!enemy) return;
     enemy.sprite.destroy();
 }
 

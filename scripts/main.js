@@ -73,12 +73,21 @@ var update = function() {
     );
 
     FlappyCombat.game.physics.arcade.overlap(
+        FlappyCombat.birdGroup,
+        FlappyCombat.birdGroup,
+        onBirdMeetBird,
+        null,
+        this
+    );
+
+    FlappyCombat.game.physics.arcade.overlap(
         FlappyCombat.foodGroup,
         FlappyCombat.barieGroup,
         onBarieMeetFood,
         null,
         this
     );
+
 
     if (FlappyCombat.inputController) FlappyCombat.inputController.update();
 }
@@ -90,6 +99,15 @@ FlappyCombat.getPlayerById = function(id, killKo) {
     for (var i = 0; i < FlappyCombat.enemies.length; i++) {
         if (FlappyCombat.enemies[i].sprite.id == id) {
             return killKo ? FlappyCombat.enemies.splice(i, 1)[0] : FlappyCombat.enemies[i]; // splicce dung de xoa phan tu thu i trong mang
+        }
+    }
+}
+
+
+FlappyCombat.removePlayerByID = function(id) {
+    for (var i = 0; i < FlappyCombat.enemies.length; i++) {
+        if (FlappyCombat.enemies[i].sprite.id == id) {
+            FlappyCombat.enemies.splice(i, 1)[0]; // splicce dung de xoa phan tu thu i trong mang
         }
     }
 }
