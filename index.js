@@ -28,7 +28,7 @@ io.on('connection', function(socket){
     id  : socket.id,
     x   : Math.random()*6016,
     y   : Math.random()*1024,
-    direction: new Point(1,1),
+    //direction: new Point(1,1),
     level: 1,
     score: 0
   }
@@ -43,7 +43,7 @@ io.on('connection', function(socket){
     var playerInfo = getPlayerById(data.id,false);
     playerInfo.x = data.position.x;
     playerInfo.y = data.position.y;
-    playerInfo.direction = data.direction;
+  //  playerInfo.direction = data.direction;
   //  console.log('x= '+data.position.x+' : y= '+data.position.y);
     socket.broadcast.emit('player_moved', playerInfo);
   });
