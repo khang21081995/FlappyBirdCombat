@@ -3,8 +3,8 @@ class Bird {
         this.sprite = group.create(x, y, 'birdRightlv1');
         FlappyCombat.game.physics.arcade.enable(this.sprite);
         this.sprite.anchor.set(0.5, 0.5);
-        this.direction = new Phaser.Point(1, 1);
-        this.sprite.body.gravity.y = 100;
+        this.direction = new Phaser.Point(0, 0);
+        this.sprite.body.gravity.y = 0;
         //this.lastShotTime = FlappyCombat.game.time.now;
         this.sprite.body.collideWorldBounds = true;
         this.sprite.health = 1;
@@ -17,7 +17,7 @@ class Bird {
 
     update(direction) {
         var birdLeft, birdRight, velocity;
-
+        this.sprite.body.gravity.y = 100;
         if (this.sprite.level == 1) {
             birdLeft = 'birdLeftlv1';
             birdRight = 'birdRightlv1';
@@ -26,23 +26,22 @@ class Bird {
         if (this.sprite.level == 2) {
             birdLeft = 'birdLeftlv2';
             birdRight = 'birdRightlv2';
-            velocity = 200;
-        } else
-
-        if (this.sprite.level == 3) {
+            velocity = 150;
+        } else{
             birdLeft = 'birdLeftlv3';
             birdRight = 'birdRightlv3';
-            velocity = 150;
-        } else
-        if (this.sprite.level == 4) {
-            birdLeft = 'birdLeftlv4';
-            birdRight = 'birdRightlv4';
-            velocity = 100;
-        } else {
-            birdLeft = 'birdLeftlv5';
-            birdRight = 'birdRightlv5';
             velocity = 50;
-        }
+         }
+        // else
+        // if (this.sprite.level == 4) {
+        //     birdLeft = 'birdLeftlv4';
+        //     birdRight = 'birdRightlv4';
+        //     velocity = 100;
+        // } else {
+        //     birdLeft = 'birdLeftlv5';
+        //     birdRight = 'birdRightlv5';
+        //     velocity = 50;
+        // }
 
         if (direction.x < 0) {
             this.sprite.body.velocity.x = -velocity;
