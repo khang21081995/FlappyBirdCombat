@@ -12,11 +12,7 @@ var onFoodMeetBird = function(birdSprite, foodSprite) {
         birdSprite.level = 2;
     } else if (birdSprite.score >= 100 && birdSprite.score < 300  && birdSprite.level != 3) {
         birdSprite.level = 3;
-    } else if (birdSprite.score >= 300 && birdSprite.score < 550  && birdSprite.level != 4) {
-        birdSprite.level = 4;
-    } else if (birdSprite.score >= 550  && birdSprite.level != 5) {
-        birdSprite.level = 5;
-    }
+    } 
 
     foodSprite.kill();
     numberOfFood--;
