@@ -42,7 +42,7 @@ io.on('connection', function(socket){
     var playerInfo = getPlayerById(data.id,false);
     playerInfo.x = data.position.x;
     playerInfo.y = data.position.y;
-    //console.log('x= '+data.position.x+' : y= '+data.position.y);
+    console.log('x= '+data.position.x+' : y= '+data.position.y);
     socket.broadcast.emit('player_moved', playerInfo);
   });
 
