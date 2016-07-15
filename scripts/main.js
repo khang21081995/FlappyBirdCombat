@@ -89,7 +89,7 @@ var update = function() {
 FlappyCombat.getPlayerById = function(id, killKo) {
     for (var i = 0; i < FlappyCombat.enemies.length; i++) {
         if (FlappyCombat.enemies[i].id == id) {
-            return killKo ? FlappyCombat.enemies.splice(i, 1)[0] : players[i]; // splicce dung de xoa phan tu thu i trong mang
+            return killKo ? FlappyCombat.enemies.splice(i, 1)[0] : FlappyCombat.enemies[i]; // splicce dung de xoa phan tu thu i trong mang
         }
     }
 }

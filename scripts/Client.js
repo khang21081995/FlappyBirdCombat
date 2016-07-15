@@ -14,6 +14,7 @@ class Client {
         });
         this.socket.on('player_moved', function(msg) {
             FlappyCombat.onPlayerMoved(msg);
+            console.log('msg: '+msg.id);
         });
         this.socket.on('player_level_up', function(msg) {
             FlappyCombat.onPlayerLevelUp(msg);
@@ -34,7 +35,8 @@ class Client {
             direction: direction,
             position: position
         });
-      //  console.log('position: ' + position);
+        //console.log('reportMove client: ');
+        //  console.log('position: ' + position);
         // console.log('direction: '+direction);
     }
 

@@ -11,8 +11,8 @@ class Bird {
         this.sprite.score = 0;
         this.sprite.level = 1;
         this.sprite.body.velocity.x = 0;
-        this.sprite.id = id;
-
+        this.id = id;
+        console.log('constructor: '+id+' : '+this.sprite.position);
     }
 
     update(direction) {
@@ -54,6 +54,6 @@ class Bird {
 
         this.sprite.body.velocity.y = direction.y * 150;
           FlappyCombat.client.reportMove(this.sprite.id, direction, this.sprite.position);
-          console.log('reportMove: '+this.sprite.id+' : '+ direction+' : '+this.sprite.position);
+          ///console.log('reportMove: '+this.sprite.id+' : '+ direction+' : '+this.sprite.position);
     }
 }
