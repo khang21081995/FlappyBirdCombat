@@ -73,6 +73,6 @@ io.on('connection', function(socket) {
     });
 });
 
-http.listen(3012, function() {
-    console.log('Server started. Listening on *:3012');
+http.listen(2225, function() {
+    console.log('Server started. Listening on *:2225');
 });
