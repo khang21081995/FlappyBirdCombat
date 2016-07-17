@@ -7,7 +7,7 @@ class InputController {
         this.lastlevel = bird.sprite.level;
         this.lastscore = bird.sprite.score;
         this.lastdirection = new Phaser.Point(0, 0);
-        this.sprite.laststatus = 0;
+        this.laststatus = 0;
     }
 
     update() {
@@ -29,9 +29,9 @@ class InputController {
             FlappyCombat.client.reportScoreUp(this.bird.sprite.id, this.bird.sprite.score);
             this.lastscore = this.bird.sprite.score;
         }
-        if ((!this.bird.sprite.alive) && this.sprite.laststatus==0 ) {
+        if ((!this.bird.sprite.alive) && this.laststatus==0 ) {
             FlappyCombat.client.reportDied(this.bird.sprite.id);
-            this.sprite.laststatus =1;
+            this.laststatus =1;
             console.log('reportDied');
         }
         if (this.bird.sprite.level - this.lastlevel > 0) {
