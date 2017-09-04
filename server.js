@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var http = require('http');
+var http = require('http').Server(app);
 var io = require('socket.io')(http);
 app.use(express.static(__dirname));
 
@@ -75,7 +75,7 @@ io.on('connection', function(socket) {
 
 
 
-var server = http.createServer(app).listen(
+var server = http.listen(
     (process.env.PORT || 6969),
     function () {
         var host = server.address().address;
